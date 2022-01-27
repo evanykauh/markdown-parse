@@ -9,7 +9,7 @@ import java.util.*;
 
 public class MarkdownParseTest {
     @Test
-    public void testgetLinks() throws IOException{
+    public void testgetLinksFile1() throws IOException{
         List<String> expected = List.of("https://something.com", "some-page.html");
         Path filename = Path.of("test-file.md");
         String contents = Files.readString(filename);
