@@ -16,6 +16,19 @@ public class MarkdownParseTest {
         ArrayList<String> actual =  MarkdownParse.getLinks(contents);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testgetLinksmyFile2() throws IOException{
+        List<String> expected = List.of("https://www.youtube.com/watch?v=dQw4w9WgXcQ", 
+            "https://images-na.ssl-images-amazon.com/images/I/91MteSqsrJL.jpgage.html", 
+            "https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa752574(v=vs.85)?redirectedfrom=MSDN",
+            "https://www.adultswim.com/videos/rick-and-morty");
+        Path filename = Path.of("test-file-2.md");
+        String contents = Files.readString(filename);
+        ArrayList<String> actual =  MarkdownParse.getLinks(contents);
+        assertEquals("Expected array of links doesn't match the actual!", expected, actual);
+    }
+
 }
 
 //javac -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar MarkdownParseTest.java

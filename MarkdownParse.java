@@ -16,12 +16,17 @@ public class MarkdownParse {
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
+            
+            while (closeParen < markdown.length()-2 && !markdown.substring(closeParen+2,closeParen+3).equals("[")){
+                closeParen = markdown.indexOf(")", closeParen + 1);
+            }
+
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             
             if(markdown.indexOf("[", closeParen) == -1)
                 break;
             currentIndex = closeParen + 1;
-            System.out.println(currentIndex);
+            
             
         }
         return toReturn;
